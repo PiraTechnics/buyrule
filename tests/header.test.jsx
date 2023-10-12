@@ -1,24 +1,18 @@
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
+import Header from "/src/components/Header";
 
-import App from "/src/App";
-
-describe("App", () => {
-	it("renders headline", () => {
-		render(<App title="React" />);
-
-		screen.debug();
-
-		// check if App components renders headline
-	});
+beforeEach(() => {
+	render(<Header />);
 });
 
-describe("something truthy and falsy", () => {
-	it("true to be true", () => {
-		expect(true).toBe(true);
+describe("Header Component", () => {
+	it("renders title headline", () => {
+		screen.debug();
+		expect(screen.getByRole("heading").textContent).toMatch(/Buy-Rule/i);
 	});
 
-	it("false to be false", () => {
-		expect(false).toBe(false);
+	it("has nav links to home and shopping", () => {
+		expect(screen.getAllByRole("link").length).toBe(2);
 	});
 });
