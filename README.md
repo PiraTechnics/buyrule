@@ -17,4 +17,5 @@ Styling with TailwindCSS
 ### Assets
 
 Hylia Serif font by [ArtsyOmni](https://artsyomni.com/hyliaserif)
-Rupee Icon by [Delapoiute](https://game-icons.net/1x1/delapouite/rupee.html)
+Rupee Logo Icon by [Delapoiute](https://game-icons.net/1x1/delapouite/rupee.html)
+Rupee Price Icon by [ZeldaWiki](https://zeldawiki.wiki/wiki/Green_Rupee)

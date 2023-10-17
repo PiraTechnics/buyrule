@@ -1,5 +1,6 @@
 /* import "./App.css"; */
 import Layout from "./components/Layout";
+import Item from "./components/Item";
 
 function App() {
 	return (
@@ -13,6 +14,7 @@ function App() {
 							alt="Is this content meme image"
 						/>
 						<p>Is this content?</p>
+						<Item />
 					</div>
 				}
 			></Layout>
