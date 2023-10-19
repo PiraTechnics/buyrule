@@ -1,0 +1,88 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Header Component > hasn't changed unexpectedly 1`] = `
+<div>
+  <div
+    class="w-screen bg-sky-600"
+  >
+    <nav
+      class="px-2 dark:border-gray-700 dark:bg-gray-800 sm:px-4 bg-sky-600 py-2 mb-4 mx-auto max-w-7xl ps-8 pe-12 relative flex justify-between"
+    >
+      <div
+        class="mx-auto flex flex-wrap items-center justify-between container"
+      >
+        <div
+          class="text-4xl text-white tracking-logo font-hylia"
+        >
+          <div
+            class="-mb-2 flex flex-row"
+          >
+            BUY
+            <img
+              alt="rupee icon"
+              class="w-8 pt-2 ms-1"
+              src="/src/assets/rupee-logo-tilted.svg"
+            />
+          </div>
+          <div
+            class=""
+          >
+            RULE
+          </div>
+        </div>
+        <button
+          class="inline-flex items-center rounded-lg p-2 text-sm text-gray-500 focus:outline-none focus:ring-2 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden sm:hidden mx-6 bg-white hover:bg-slate-300 hover:text-slate-700 focus:ring-none hover:border-amber-300"
+          data-testid="flowbite-navbar-toggle"
+        >
+          <span
+            class="sr-only"
+          >
+            Open main menu
+          </span>
+          <svg
+            aria-hidden="true"
+            class="h-6 w-6 shrink-0"
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 448 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+            />
+          </svg>
+        </button>
+        <div
+          class="w-full md:block md:w-auto hidden sm:block sm:w-auto"
+          data-testid="flowbite-navbar-collapse"
+        >
+          <ul
+            class="mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium"
+          >
+            <div
+              class="flex flex-row max-sm:flex-col max-sm:text-center gap-4 max-sm:gap-0 max-sm:me-4 max-sm:border-t text-lg font-hylia"
+              id="navbar-menu"
+            >
+              <a
+                class="text-white hover:text-yellow-200 max-sm:hover:bg-sky-800 py-2"
+                href="/"
+              >
+                Home
+              </a>
+              <a
+                class="text-white hover:text-yellow-200 max-sm:hover:bg-sky-800 py-2"
+                href="/shop"
+              >
+                Shopping
+              </a>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+`;
