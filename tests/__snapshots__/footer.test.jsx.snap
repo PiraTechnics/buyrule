@@ -1,0 +1,44 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Footer Component > hasn't changed unexpectedly 1`] = `
+<div>
+  <footer
+    class="bg-sky-600 w-screen py-2 mx-auto px-2 sm:px-6 lg:px-8"
+  >
+    <div
+      class="relative flex justify-center gap-16"
+    >
+      <div
+        class="text-4xl text-white tracking-logo font-hylia"
+      >
+        <div
+          class="-mb-2 flex flex-row"
+        >
+          BUY
+          <img
+            alt="rupee icon"
+            class="w-8 pt-2 ms-1"
+            src="/src/assets/rupee-logo-tilted.svg"
+          />
+        </div>
+        <div
+          class=""
+        >
+          RULE
+        </div>
+      </div>
+      <div
+        class="text-sm font-hylia self-end"
+      >
+        <span>
+          © Devin Younge
+        </span>
+         
+        <span>
+          2023
+        </span>
+      </div>
+    </div>
+  </footer>
+</div>
+`;

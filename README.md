@@ -19,3 +19,7 @@ Styling with TailwindCSS
 Hylia Serif font by [ArtsyOmni](https://artsyomni.com/hyliaserif)
 Rupee Logo Icon by [Delapoiute](https://game-icons.net/1x1/delapouite/rupee.html)
 Rupee Price Icon by [ZeldaWiki](https://zeldawiki.wiki/wiki/Green_Rupee)
+
+### Project Links
+
+[Trello Kanban Board](https://trello.com/b/pWxvQmYs/buy-rule-project-app)

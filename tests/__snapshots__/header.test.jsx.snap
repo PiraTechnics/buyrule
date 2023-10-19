@@ -6,7 +6,7 @@ exports[`Header Component > hasn't changed unexpectedly 1`] = `
     class="w-screen bg-sky-600"
   >
     <nav
-      class="px-2 dark:border-gray-700 dark:bg-gray-800 sm:px-4 bg-sky-600 py-2 mb-4 mx-auto max-w-7xl ps-8 pe-12 relative flex justify-between"
+      class="px-2 dark:border-gray-700 dark:bg-gray-800 sm:px-4 bg-sky-600 py-2 mx-auto max-w-7xl ps-8 pe-12 relative flex justify-between"
     >
       <div
         class="mx-auto flex flex-wrap items-center justify-between container"
