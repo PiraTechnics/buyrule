@@ -12,7 +12,6 @@ const HomePage = () => {
 						alt="Is this content meme image"
 					/>
 					<p>Is this content?</p>
-					<Item />
 				</div>
 			}
 		></Layout>
