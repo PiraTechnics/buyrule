@@ -10,27 +10,65 @@ const ShopPage = () => {
 
 	//Compendium API data fetch
 	useEffect(() => {
-		fetch(`https://botw-compendium.herokuapp.com/api/v3/compendium/all`)
-			.then((response) => {
-				if (response.status >= 400) {
-					throw new Error("server error");
-				}
-				return response;
-			})
-			.then((res) => res.json())
-			.then((data) => {
-				setData(shuffleItems(filterItems(data.data)));
-			})
-			.catch((error) => setError(error))
-			.finally(() => setLoading(false));
+		const items = loadItems();
+		if (items.length) {
+			//get from items if we have them
+			console.log("Loaded from Session Storage");
+			//console.log(items);
+			setData(items);
+			setLoading(false); //ensure we don't keep loading forever ;)
+		} else {
+			fetch(`https://botw-compendium.herokuapp.com/api/v3/compendium/all`)
+				.then((response) => {
+					if (response.status >= 400) {
+						throw new Error("server error");
+					}
+					return response;
+				})
+				.then((res) => res.json())
+				.then((jsonResults) => {
+					//Filter into sensible items, then shuffle for 'randomized' viewing
+					storeItems(shuffleItems(filterAndProcessItems(jsonResults.data)));
+					setData(loadItems());
+					console.log("Loaded from API...");
+				})
+				.catch((error) => setError(error))
+				.finally(() => {
+					setLoading(false);
+				});
+		}
 	}, []);
 
+	const loadItems = () => {
+		//sessionStorage.clear();
+		const itemsUnparsed = sessionStorage.getItem("items") || "[]";
+		const parsed = JSON.parse(itemsUnparsed);
+		console.log("loading items...");
+		return parsed;
+	};
+
+	const storeItems = (jsonResults) => {
+		sessionStorage.setItem("items", JSON.stringify(jsonResults) || "[]");
+		console.log("stored items!");
+	};
+
 	if (error) {
-		return <Layout>content={<div>Error! {error.message}</div>}</Layout>;
+		return (
+			<Layout
+				content={
+					<div className="text-black text-center">Error: {error.message}</div>
+				}
+			/>
+		);
 	} else if (loading) {
-		return <Layout>content={<div>Loading...</div>}</Layout>;
+		return (
+			<Layout
+				content={<div className="text-black text-center">Loading...</div>}
+			/>
+		);
 	} else {
 		//return our desired content
+		console.log(data);
 		return (
 			<Layout
 				content={<PaginatedItems items={data} itemsPerPage={25} />}
@@ -60,15 +98,29 @@ const shuffleItems = (itemArray) => {
 	return itemArray;
 };
 
-const filterItems = (itemArray) => {
+const filterAndProcessItems = (itemArray) => {
+	//Filters out stuff that doesn't make sense for a shop
+	//Also adds randomized values and qunaities
 	const filteredArray = [];
 	for (let i = 0; i < itemArray.length; i++) {
 		let category = itemArray[i].category;
 		if (category == "equipment" || category == "materials") {
+			itemArray[i].price = getRandomPrice();
+			itemArray[i].inventory = getRandomQuantity();
 			filteredArray.push(itemArray[i]);
 		} else if (category == "creatures" && itemArray[i].edible == true) {
+			itemArray[i].price = getRandomPrice();
+			itemArray[i].inventory = getRandomQuantity();
 			filteredArray.push(itemArray[i]);
 		}
 	}
 	return filteredArray;
+};
+
+const getRandomPrice = () => {
+	return Math.floor(Math.random() * 100);
+};
+
+const getRandomQuantity = () => {
+	return Math.floor(Math.random() * 10) + 1;
 };
