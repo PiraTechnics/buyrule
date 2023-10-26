@@ -1,8 +1,18 @@
-//import { useState } from "react";
 import { Card } from "flowbite-react";
 import RupeeIcon from "../assets/BotW_Green_Rupee_Icon.png";
+import { useSessionStorage } from "@uidotdev/usehooks";
 
 const Item = ({ data }) => {
+	const [cartItems, setCartItems] = useSessionStorage("cart", []);
+	const [runningTotal, setRunningTotal] = useSessionStorage("total", 0);
+
+	const cartAddHandler = () => {
+		console.log(`Added to cart: 1x ${data.name}, price: ${data.price} rupees`);
+		let prevCart = cartItems;
+		setCartItems([...prevCart, data]);
+		setRunningTotal(runningTotal + data.price);
+	};
+
 	return (
 		data && (
 			<Card imgAlt="" imgSrc={data.image} className="max-w-sm">
@@ -34,12 +44,17 @@ const Item = ({ data }) => {
 						<img width={40} src={RupeeIcon} alt="rupee icon"></img>
 						<span>{data.price}</span>
 					</span>
-					<a
+					<button
 						className="rounded-lg bg-sky-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-sky-800 hover:text-yellow-200 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
-						href="#"
+						type="button"
+						data-drawer-target="shopping-cart-sidebar"
+						data-drawer-show="shopping-cart-sidebar"
+						data-drawer-placement="right"
+						aria-controls="shopping-cart-sidebar"
+						onClick={cartAddHandler}
 					>
-						<p>Add to cart</p>
-					</a>
+						Add to Cart
+					</button>
 				</div>
 			</Card>
 		)
