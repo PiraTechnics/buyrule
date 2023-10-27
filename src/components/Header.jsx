@@ -33,6 +33,7 @@ const Header = () => {
 								data-drawer-target="shopping-cart-sidebar"
 								data-drawer-show="shopping-cart-sidebar"
 								data-drawer-placement="right"
+								//data-drawer-backdrop="false"
 								aria-controls="shopping-cart-sidebar"
 							>
 								Cart

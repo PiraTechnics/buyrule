@@ -1,16 +1,35 @@
 import { Card } from "flowbite-react";
 import RupeeIcon from "../assets/BotW_Green_Rupee_Icon.png";
 import { useSessionStorage } from "@uidotdev/usehooks";
+/* import { useEffect } from "react";
+import { initFlowbite } from "flowbite"; */
 
 const Item = ({ data }) => {
 	const [cartItems, setCartItems] = useSessionStorage("cart", []);
 	const [runningTotal, setRunningTotal] = useSessionStorage("total", 0);
+
+	/* 	useEffect(() => {
+		initFlowbite();
+		console.log("flowbit init'd!");
+	}); */
 
 	const cartAddHandler = () => {
 		//console.log(`Added to cart: 1x ${data.name}, price: ${data.price} rupees`);
 		let prevCart = cartItems;
 		setCartItems([...prevCart, data]);
 		setRunningTotal(runningTotal + data.price);
+
+		//Partial Bugfix https://trello.com/c/LyH1AVLE (card #29) manual trigger of classes
+		document.querySelector("body").classList.add("overflow-hidden");
+		let sidebarElement = document.querySelector("#shopping-cart-sidebar");
+		sidebarElement.classList.remove("translate-x-full"); //this moves sidebar out
+
+		//These don't seem to change the effect on first load
+		sidebarElement.classList.add("transform-none");
+		sidebarElement.setAttribute("aria-modal", "true");
+		sidebarElement.setAttribute("role", "dialog");
+		sidebarElement.setAttribute("data-drawer-backdrop", "true");
+		sidebarElement.removeAttribute("aria-hidden");
 	};
 
 	//NOTE: Add alt text if possible
@@ -51,6 +70,7 @@ const Item = ({ data }) => {
 						data-drawer-target="shopping-cart-sidebar"
 						data-drawer-show="shopping-cart-sidebar"
 						data-drawer-placement="right"
+						//data-drawer-backdrop="false"
 						aria-controls="shopping-cart-sidebar"
 						onClick={cartAddHandler}
 					>
